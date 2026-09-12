@@ -1,89 +1,76 @@
-# Resenhou — Landing Page
+<div align="center">
 
-Página de apresentação pública do **Resenhou**, o sistema de vida noturna que conecta quem sai
-para o rolê com os bares da cidade. A landing page é o ponto de entrada compartilhado: apresenta
-as duas frentes do produto (cliente e estabelecimento) e direciona cada visitante para o
-cadastro correspondente.
+# +party — Landing Page
 
-> Este repositório contém apenas a landing page. O sistema completo (app do cliente e painel do
-> estabelecimento) fica em [link para o repositório principal].
+**A porta de entrada do +party.**
 
----
+Página de apresentação pública do sistema, para clientes e donos de bar.
 
-## Índice
-
-- [Sobre](#sobre)
-- [Seções da página](#seções-da-página)
-- [Identidade visual](#identidade-visual)
-- [Tecnologias](#tecnologias)
-- [Como rodar](#como-rodar)
-- [Estrutura de arquivos](#estrutura-de-arquivos)
-- [Status](#status)
+</div>
 
 ---
 
 ## Sobre
 
-A landing page tem um objetivo claro: fazer o visitante entender rapidamente o que é o Resenhou,
-se identificar com o problema que ele resolve (seja como cliente, seja como dono de bar) e
-seguir para o cadastro do lado certo. Toda a comunicação parte da ideia de que o sistema atende
-"os dois lados da noite".
+Esta é a landing page do **+party**, o sistema de vida noturna que conecta quem sai para o rolê
+com os bares da cidade. Ela cumpre um papel específico: apresentar o produto para dois públicos
+diferentes na mesma página e encaminhar cada visitante para o cadastro certo.
 
-## Seções da página
+É a única peça do projeto que fala com os dois lados ao mesmo tempo — por isso mantém a
+identidade visual da marca (azul), sem replicar as cores usadas internamente para diferenciar
+os acessos do sistema.
 
-- **Início (Hero):** apresentação direta do Resenhou, com chamada para escolher o perfil
-  (cliente ou dono de bar) e um caminho secundário para quem ainda quer entender melhor.
-- **Para que serve:** duas personas (um cliente e um dono de bar), cada uma com a situação
-  antes do Resenhou e como o sistema resolve o problema dela.
-- **Contato:** canal de e-mail para dúvidas e parcerias.
-- **Rodapé:** créditos do projeto e link para a página "Sobre a equipe".
-- **Sobre o sistema (página secundária):** detalhamento das duas visões (rolezeiro e dono do
-  estabelecimento).
-- **Planos (páginas secundárias):** planos do cliente e planos do estabelecimento, cada um
-  levando ao cadastro correspondente.
-- **Nossa equipe (página secundária):** os integrantes por trás do projeto.
+> O sistema completo (cliente, gerente e bar/cozinha) fica em repositório separado: `[link]`
 
-## Identidade visual
+---
 
-- **Cor principal:** azul (identidade da marca Resenhou).
-- **Contraste:** branco, cinza, preto e variações de azul.
-- **Tema:** fundo escuro e acolhedor (atmosfera noturna, sem excesso de frieza "high tech"),
-  com uma cor de apoio quente usada com moderação.
-- **Ilustrações:** as personas usam ilustrações humanas para dar um tom acolhedor à página
-  (a inserir).
+## Estrutura da página
 
-> A landing page mantém a identidade da marca (azul) e não replica a cor verde do painel do
-> estabelecimento, já que essa cor é apenas um recurso temporário de diferenciação interna do
-> sistema.
+**Página principal**
+
+| Seção | Conteúdo |
+|---|---|
+| **Início** | Apresentação do +party, com a escolha de perfil (cliente ou dono de bar) e um caminho alternativo para quem ainda quer entender melhor |
+| **Para que serve** | Duas personas — um cliente e um dono de bar — cada uma com a situação antes do +party e como o sistema resolve seu problema |
+| **Contato** | Canal de e-mail para dúvidas e parcerias |
+| **Rodapé** | Créditos do projeto e link para a página da equipe |
+
+**Páginas secundárias**
+
+- **Sobre o sistema** — detalhamento das duas visões (rolezeiro e dono do estabelecimento)
+- **Planos — Cliente** — opções disponíveis para o público final, levando ao cadastro
+- **Planos — Estabelecimento** — opções para bares, levando ao cadastro
+- **Nossa equipe** — os integrantes por trás do projeto
+
+---
+
+## Decisões de design
+
+- **Fundo contínuo.** A página inteira compartilha uma única superfície de fundo, sem cortes
+  entre seções. Cada seção é diferenciada por variações sutis de iluminação, não por blocos de
+  cor distintos.
+- **Escuro, mas acolhedor.** A atmosfera noturna é mantida, evitando a frieza de um visual
+  excessivamente técnico. Uma cor de apoio quente é usada com moderação para quebrar a
+  monocromia.
+- **Ilustrações humanas.** As personas são acompanhadas de ilustrações, e não de blocos
+  abstratos, para que o visitante se identifique com o problema antes de conhecer o produto.
+- **Um ponto de decisão.** A escolha de perfil acontece uma única vez, logo no topo da página,
+  evitando que o visitante precise se identificar mais de uma vez ao longo da navegação.
+
+---
 
 ## Tecnologias
 
-- [Especificar — ex: HTML, CSS, JavaScript, ou Angular]
-- Protótipo desenhado no Figma / Figma Make
+`[especificar — ex: HTML, CSS, JavaScript / Angular]`
 
-> Preencher conforme a implementação final.
+Protótipo desenhado no Figma.
 
-## Como rodar
-
-```bash
-# Clonar o repositório
-git clone [URL-do-repositório-da-landing]
-cd resenhou-landing
-
-# Instalar dependências (se aplicável)
-[comando de instalação]
-
-# Rodar localmente
-[comando de execução]
-```
-
-> Preencher com os comandos reais. Se for uma página estática, basta abrir o `index.html` no
-> navegador.
+---
 
 ## Estrutura de arquivos
 
 ```
-resenhou-landing/
+party-landing/
 ├── index.html
 ├── assets/
 │   ├── css/
@@ -92,12 +79,27 @@ resenhou-landing/
 └── README.md
 ```
 
-> Ajustar conforme a estrutura real do projeto.
+---
 
-## Status
+## Como rodar
 
-🚧 **Em desenvolvimento** — protótipo em refinamento visual.
+```bash
+# Clonar o repositório
+git clone [URL]
+cd party-landing
+
+# Abrir localmente
+[comando ou: abrir index.html no navegador]
+```
 
 ---
 
-Projeto acadêmico — Análise e Desenvolvimento de Sistemas.
+## Status
+
+🚧 **Em desenvolvimento** — implementação prevista para a última semana de outubro de 2026.
+
+---
+
+<div align="center">
+<sub>Projeto acadêmico · Análise e Desenvolvimento de Sistemas</sub>
+</div>
