@@ -1,0 +1,50 @@
+.page-top { padding-top: calc(var(--header-h) + clamp(44px, 7vw, 80px)); padding-bottom: 0; }
+.page-top h1 { font-size: clamp(2.1rem, 4.6vw, 3.1rem); }
+
+.time {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+.membro { display: flex; flex-direction: column; }
+
+.membro-topo { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(140deg, var(--brand-400), var(--brand-700));
+  color: #fff;
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .02em;
+}
+.membro-nome { font-size: 1.08rem; font-weight: 650; }
+.membro-papel {
+  margin: 4px 0 0;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--brand-300);
+}
+.membro-foco { margin: 0 0 20px; font-size: .94rem; flex: 1; }
+
+.membro-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.membro-links a {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: .84rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .16s ease, border-color .16s ease, background .16s ease;
+}
+.membro-links a:hover { color: #fff; border-color: var(--brand-400); background: var(--surface-hover); }
+.sem-link { font-size: .84rem; color: var(--text-faint); }
+
+.troca { margin-top: 34px; font-size: .95rem; }

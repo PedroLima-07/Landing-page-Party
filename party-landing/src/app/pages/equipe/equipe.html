@@ -1,0 +1,54 @@
+<section class="section page-top glow-a">
+  <div class="shell">
+    <p class="eyebrow">Nossa equipe</p>
+    <h1>Quem está por trás do +party.</h1>
+    <p class="lead">
+      Somos a Squad 4 da disciplina Startup: Project One, do curso de Análise e
+      Desenvolvimento de Sistemas. Sete pessoas dividindo produto, código, design
+      e gestão.
+    </p>
+  </div>
+</section>
+
+<section class="section glow-b">
+  <div class="shell">
+    <div class="time">
+      @for (m of membros; track m.nome) {
+        <article class="card membro">
+          <div class="membro-topo">
+            <span class="avatar" aria-hidden="true">{{ iniciais(m.nome) }}</span>
+            <div>
+              <h2 class="membro-nome">{{ m.nome }}</h2>
+              <p class="membro-papel">{{ m.papel }}</p>
+            </div>
+          </div>
+
+          <p class="membro-foco">{{ m.foco }}</p>
+
+          <div class="membro-links">
+            @if (m.github) {
+              <a [href]="'https://github.com/' + m.github" target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+            }
+            @if (m.linkedin) {
+              <a [href]="'https://www.linkedin.com/in/' + m.linkedin" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+            }
+            @if (!m.github && !m.linkedin) {
+              <span class="sem-link">Links em breve</span>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+    <p class="troca">
+      Quer falar com a gente?
+      <a routerLink="/" fragment="contato" class="link-quiet">
+        Ir para o contato <span class="arrow">→</span>
+      </a>
+    </p>
+  </div>
+</section>
