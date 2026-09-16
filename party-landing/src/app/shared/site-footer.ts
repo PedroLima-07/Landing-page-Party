@@ -21,8 +21,8 @@ import { PartyLogo } from './party-logo';
           <div class="col">
             <h3 class="col-t">Produto</h3>
             <a routerLink="/sobre">Sobre o sistema</a>
-            <a routerLink="/planos/cliente">Planos — Cliente</a>
-            <a routerLink="/planos/estabelecimento">Planos — Estabelecimento</a>
+            <a routerLink="/planos/cliente">Planos para clientes</a>
+            <a routerLink="/planos/estabelecimento">Planos para bares</a>
           </div>
           <div class="col">
             <h3 class="col-t">Projeto</h3>
@@ -34,7 +34,7 @@ import { PartyLogo } from './party-logo';
 
       <div class="shell ft-base">
         <p class="credits">
-          +party {{ ano }} · São Paulo — projeto acadêmico de
+          +party {{ ano }} · São Paulo. Projeto acadêmico de
           Análise e Desenvolvimento de Sistemas.
         </p>
         <a routerLink="/equipe" class="link-quiet">
@@ -57,9 +57,10 @@ import { PartyLogo } from './party-logo';
     .col { display: flex; flex-direction: column; gap: 11px; }
     .col-t {
       margin: 0 0 4px;
+      font-family: var(--font-display);
       font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-faint);
     }

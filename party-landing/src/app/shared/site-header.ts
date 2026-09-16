@@ -8,7 +8,7 @@ import { PartyLogo } from './party-logo';
   template: `
     <header class="hd" [class.is-stuck]="stuck()">
       <div class="shell hd-inner">
-        <a routerLink="/" class="brand" aria-label="+party — página inicial">
+        <a routerLink="/" class="brand" aria-label="+party, página inicial">
           <app-party-logo />
         </a>
 
@@ -57,13 +57,27 @@ import { PartyLogo } from './party-logo';
 
     .nav { display: flex; align-items: center; gap: 28px; }
     .nav a {
+      position: relative;
       color: var(--text-muted);
       font-size: 0.93rem;
-      font-weight: 500;
+      font-weight: 600;
       text-decoration: none;
       transition: color 0.16s ease;
     }
+    .nav a:not(.nav-cta)::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -7px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--brand-400);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    }
     .nav a:hover, .nav a.active { color: var(--text); }
+    .nav a:hover:not(.nav-cta)::after,
+    .nav a.active:not(.nav-cta)::after { transform: scaleX(1); }
     .nav-cta { padding: 10px 22px; font-size: 0.9rem; color: #fff !important; }
 
     .burger {
@@ -111,6 +125,7 @@ import { PartyLogo } from './party-logo';
       .nav.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
       .nav a { padding: 12px 10px; border-radius: 10px; }
       .nav a:hover { background: var(--surface-hover); }
+      .nav a:not(.nav-cta)::after { content: none; }
       .nav-cta { margin-top: 8px; justify-content: center; }
     }
   `,

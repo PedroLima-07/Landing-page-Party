@@ -1,7 +1,9 @@
 <!-- ============ 1. INÍCIO ============ -->
 <section id="inicio" class="section hero glow-a">
   <div class="shell">
-    <p class="eyebrow">Vida noturna, sem fricção</p>
+    <span class="selo">
+      <i aria-hidden="true"></i> Lotação dos bares em tempo real
+    </span>
 
     <h1>
       Seu rolê<br />
@@ -9,38 +11,32 @@
     </h1>
 
     <p class="lead">
-      O <strong>+party</strong> conecta quem sai para o rolê com os bares da cidade.
-      Lotação em tempo real, comanda digital no celular e gestão do estabelecimento —
-      tudo no mesmo lugar.
+      O <strong>+party</strong> conecta quem sai para o rolê com os bares da cidade:
+      você vê como está o movimento antes de sair de casa e pede sem encarar fila.
     </p>
 
-    <!-- Um único ponto de decisão (decisão de design do README) -->
-    <div class="choice" role="group" aria-label="Escolha seu perfil">
-      <a routerLink="/planos/cliente" class="choice-card">
-        <span class="choice-ico" aria-hidden="true">🎉</span>
-        <span class="choice-body">
-          <strong>Eu vou pro rolê</strong>
-          <span>Quero achar o bar certo e pedir sem fila.</span>
-        </span>
-        <span class="choice-arrow" aria-hidden="true">→</span>
-      </a>
+    <ul class="provas">
+      <li>Sem fila no balcão</li>
+      <li>Comanda no celular</li>
+      <li>Gestão do bar num painel</li>
+    </ul>
 
-      <a routerLink="/planos/estabelecimento" class="choice-card is-warm">
-        <span class="choice-ico" aria-hidden="true">🍻</span>
-        <span class="choice-body">
-          <strong>Eu tenho um bar</strong>
-          <span>Quero gerir comandas, equipe e vendas.</span>
-        </span>
-        <span class="choice-arrow" aria-hidden="true">→</span>
-      </a>
+    <!-- Um único ponto de decisão (decisão de design do README) -->
+    <div class="cta-par" role="group" aria-label="Escolha seu perfil">
+      <a routerLink="/planos/cliente" class="btn-party">Eu vou pro rolê</a>
+      <a routerLink="/planos/estabelecimento" class="btn-ghost">Eu tenho um bar</a>
     </div>
 
-    <!-- caminho alternativo para quem ainda quer entender melhor -->
     <p class="alt-path">
       <a routerLink="/sobre" class="link-quiet">
         Ainda quero entender como funciona <span class="arrow">→</span>
       </a>
     </p>
+  </div>
+
+  <!-- O app na mão de quem sai -->
+  <div class="palco">
+    <app-phone-mock />
   </div>
 </section>
 
@@ -52,7 +48,7 @@
       <h2>Dois lados do balcão, o mesmo problema.</h2>
       <p class="lead">
         A noite trava nos mesmos pontos para quem consome e para quem vende.
-        Veja como era antes — e o que muda com o +party.
+        Veja como era antes e o que muda com o +party.
       </p>
     </div>
 

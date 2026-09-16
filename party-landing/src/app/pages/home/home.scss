@@ -1,51 +1,90 @@
-/* ---- Início ---- */
+/* ---- Início ----
+   Hero centralizado: o visitante lê a promessa e vê o app logo abaixo,
+   antes de escolher de que lado do balcão ele está. */
 .hero {
-  padding-top: calc(var(--header-h) + clamp(56px, 10vw, 104px));
-  padding-bottom: clamp(48px, 6vw, 76px);
+  padding-top: calc(var(--header-h) + clamp(48px, 8vw, 88px));
+  padding-bottom: 0;
+  text-align: center;
 }
-.grad {
-  background: linear-gradient(100deg, var(--brand-300), var(--brand-500) 55%, var(--warm));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hero .lead strong { color: var(--text); font-weight: 600; }
+.hero .shell { display: flex; flex-direction: column; align-items: center; }
+.hero h1 { max-width: 16ch; }
+.hero .lead { margin-inline: auto; max-width: 54ch; }
+.hero .lead strong { color: var(--text); font-weight: 700; }
 
-.choice {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: clamp(34px, 5vw, 48px);
-  max-width: 820px;
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 22px;
+  padding: 7px 16px 7px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(91, 130, 255, .32);
+  background: rgba(91, 130, 255, .1);
+  font-family: var(--font-display);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--brand-300);
 }
-.choice-card {
+.selo i {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--brand-400);
+  box-shadow: 0 0 0 4px rgba(91, 130, 255, .16);
+  animation: selo-pulsa 2s ease-in-out infinite;
+}
+@keyframes selo-pulsa { 50% { opacity: .3; } }
+
+.provas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 22px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.provas li {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 22px 24px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  text-decoration: none;
-  color: var(--text);
-  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+  gap: 7px;
+  font-size: .89rem;
+  color: var(--text-muted);
 }
-.choice-card:hover {
-  color: var(--text);
-  border-color: var(--brand-400);
-  background: var(--surface-hover);
-  transform: translateY(-3px);
+.provas li::before {
+  content: "✓";
+  font-weight: 800;
+  color: var(--brand-400);
 }
-.choice-card.is-warm:hover { border-color: var(--warm); }
-.choice-ico { font-size: 1.7rem; line-height: 1; }
-.choice-body { display: flex; flex-direction: column; gap: 4px; flex: 1; }
-.choice-body strong { font-size: 1.04rem; font-weight: 650; }
-.choice-body span { font-size: .9rem; color: var(--text-muted); line-height: 1.5; }
-.choice-arrow { color: var(--text-faint); transition: transform .18s ease, color .18s ease; }
-.choice-card:hover .choice-arrow { transform: translateX(4px); color: var(--text); }
 
-.alt-path { margin-top: 26px; }
+.cta-par {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: clamp(28px, 4vw, 38px);
+}
+
+.alt-path { margin-top: 22px; }
+
+/* Palco do celular: uma faixa de luz atravessa a página por trás do aparelho. */
+.palco {
+  position: relative;
+  margin-top: clamp(44px, 6vw, 70px);
+  padding-bottom: clamp(10px, 2vw, 20px);
+}
+/* Luz suave centrada no aparelho, sem bordas duras que cortem a página. */
+.palco::before {
+  content: "";
+  position: absolute;
+  inset: 12% -10% 6%;
+  z-index: -1;
+  background:
+    radial-gradient(46% 62% at 50% 52%, rgba(43, 87, 240, .34), transparent 72%),
+    radial-gradient(70% 50% at 18% 42%, rgba(255, 178, 92, .07), transparent 70%),
+    radial-gradient(70% 50% at 82% 58%, rgba(91, 130, 255, .12), transparent 70%);
+  filter: blur(6px);
+}
 
 /* ---- Para que serve ---- */
 .persona {
@@ -120,9 +159,9 @@
 
 /* ---- Responsivo ---- */
 @media (max-width: 860px) {
-  .choice { grid-template-columns: 1fr; }
   .persona { grid-template-columns: 1fr; }
   .persona.is-flip .persona-art { order: 0; }
   .persona-art { max-width: 380px; }
   .contato { grid-template-columns: 1fr; }
+  .cta-par > * { flex: 1 1 220px; }
 }

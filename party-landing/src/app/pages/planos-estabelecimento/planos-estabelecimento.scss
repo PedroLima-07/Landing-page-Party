@@ -17,16 +17,24 @@
   border-radius: 999px;
   background: var(--brand-500);
   color: #fff;
+  font-family: var(--font-display);
   font-size: .7rem;
   font-weight: 700;
-  letter-spacing: .08em;
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
 .plano-nome { font-size: 1.5rem; }
 .plano-resumo { margin: 8px 0 22px; font-size: .95rem; }
 
 .plano-preco { display: flex; align-items: baseline; gap: 8px; margin: 0 0 22px; }
-.valor { font-size: 1.9rem; font-weight: 700; color: var(--text); letter-spacing: -.02em; }
+.valor {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -.04em;
+  line-height: 1;
+}
 .periodo { font-size: .88rem; color: var(--text-faint); }
 
 .plano-itens { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 11px; flex: 1; }

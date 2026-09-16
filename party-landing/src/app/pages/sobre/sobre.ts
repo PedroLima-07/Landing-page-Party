@@ -34,7 +34,7 @@ export class Sobre {
         },
         {
           t: 'Pedir da mesa',
-          d: 'Cardápio completo no celular. O pedido vai direto para a tela da equipe — sem fila no balcão e sem anotação em papel.',
+          d: 'Cardápio completo no celular. O pedido vai direto para a tela da equipe, sem fila no balcão e sem anotação em papel.',
         },
         {
           t: 'Chamar o garçom',
