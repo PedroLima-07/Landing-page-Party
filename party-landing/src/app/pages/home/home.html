@@ -1,0 +1,111 @@
+<!-- ============ 1. INÍCIO ============ -->
+<section id="inicio" class="section hero glow-a">
+  <div class="shell">
+    <span class="selo">
+      <i aria-hidden="true"></i> Lotação dos bares em tempo real
+    </span>
+
+    <h1>
+      Seu rolê<br />
+      <span class="grad">começa aqui.</span>
+    </h1>
+
+    <p class="lead">
+      O <strong>+party</strong> conecta quem sai para o rolê com os bares da cidade:
+      você vê como está o movimento antes de sair de casa e pede sem encarar fila.
+    </p>
+
+    <ul class="provas">
+      <li>Sem fila no balcão</li>
+      <li>Comanda no celular</li>
+      <li>Gestão do bar num painel</li>
+    </ul>
+
+    <!-- Um único ponto de decisão (decisão de design do README) -->
+    <div class="cta-par" role="group" aria-label="Escolha seu perfil">
+      <a routerLink="/planos/cliente" class="btn-party">Eu vou pro rolê</a>
+      <a routerLink="/planos/estabelecimento" class="btn-ghost">Eu tenho um bar</a>
+    </div>
+
+    <p class="alt-path">
+      <a routerLink="/sobre" class="link-quiet">
+        Ainda quero entender como funciona <span class="arrow">→</span>
+      </a>
+    </p>
+  </div>
+
+  <!-- O app na mão de quem sai -->
+  <div class="palco">
+    <app-phone-mock />
+  </div>
+</section>
+
+<!-- ============ 2. PARA QUE SERVE ============ -->
+<section id="para-que-serve" class="section glow-b">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Para que serve</p>
+      <h2>Dois lados do balcão, o mesmo problema.</h2>
+      <p class="lead">
+        A noite trava nos mesmos pontos para quem consome e para quem vende.
+        Veja como era antes e o que muda com o +party.
+      </p>
+    </div>
+
+    @for (p of personas; track p.kind) {
+      <article class="persona" [class.is-flip]="p.kind === 'bar'">
+        <div class="persona-art">
+          <app-persona-art [kind]="p.kind" [alt]="'Ilustração: ' + p.nome" />
+        </div>
+
+        <div class="persona-text">
+          <span class="chip" [class.is-warm]="p.kind === 'bar'">{{ p.chip }}</span>
+          <h3>{{ p.nome }}</h3>
+          <p class="papel">{{ p.papel }}</p>
+
+          <div class="ba">
+            <p class="ba-t">Antes do +party</p>
+            <p class="ba-p">{{ p.antes }}</p>
+          </div>
+
+          <div class="ba is-after">
+            <p class="ba-t">Com o +party</p>
+            <ul class="ba-list">
+              @for (item of p.depois; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+
+          <a [routerLink]="p.ctaLink" class="btn-ghost persona-cta">
+            {{ p.ctaLabel }}
+          </a>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<!-- ============ 3. CONTATO ============ -->
+<section id="contato" class="section glow-c">
+  <div class="shell">
+    <div class="contato card">
+      <div>
+        <p class="eyebrow">Contato</p>
+        <h2>Dúvida, parceria ou quer o +party no seu bar?</h2>
+        <p class="lead">
+          Fala com a gente por e-mail. Respondemos com o time do projeto.
+        </p>
+      </div>
+
+      <div class="contato-cta">
+        <a class="btn-party" href="mailto:contato&#64;party.app?subject=Contato%20pelo%20site%20do%20%2Bparty">
+          contato&#64;party.app
+        </a>
+        <a routerLink="/equipe" class="link-quiet">
+          Conhecer a equipe <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

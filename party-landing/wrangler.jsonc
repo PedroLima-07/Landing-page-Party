@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "party-landing",
+  "compatibility_date": "2026-09-16",
+  "assets": {
+    // A saida do "ng build". Nao ha servidor: o Cloudflare serve os arquivos.
+    "directory": "./dist/party-landing/browser",
+    // Rotas como /equipe e /planos/cliente sao resolvidas pelo Angular no
+    // navegador, entao qualquer caminho desconhecido devolve o index.html.
+    "not_found_handling": "single-page-application"
+  }
+}

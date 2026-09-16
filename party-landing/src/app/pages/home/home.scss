@@ -1,0 +1,182 @@
+/* ---- Início ----
+   Hero centralizado: o visitante lê a promessa e vê o app logo abaixo,
+   antes de escolher de que lado do balcão ele está. */
+.hero {
+  padding-top: calc(var(--header-h) + clamp(48px, 8vw, 88px));
+  padding-bottom: 0;
+  text-align: center;
+}
+.hero .shell { display: flex; flex-direction: column; align-items: center; }
+.hero h1 { max-width: 16ch; }
+.hero .lead { margin-inline: auto; max-width: 54ch; }
+.hero .lead strong { color: var(--text); font-weight: 700; }
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 22px;
+  padding: 7px 16px 7px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(91, 130, 255, .32);
+  background: rgba(91, 130, 255, .1);
+  font-family: var(--font-display);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--brand-300);
+}
+.selo i {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--brand-400);
+  box-shadow: 0 0 0 4px rgba(91, 130, 255, .16);
+  animation: selo-pulsa 2s ease-in-out infinite;
+}
+@keyframes selo-pulsa { 50% { opacity: .3; } }
+
+.provas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 22px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.provas li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .89rem;
+  color: var(--text-muted);
+}
+.provas li::before {
+  content: "✓";
+  font-weight: 800;
+  color: var(--brand-400);
+}
+
+.cta-par {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: clamp(28px, 4vw, 38px);
+}
+
+.alt-path { margin-top: 22px; }
+
+/* Palco do celular: o aparelho aparece só até certo ponto e mergulha atrás de
+   uma faixa que atravessa a página, como numa vitrine. */
+.palco {
+  position: relative;
+  margin-top: clamp(40px, 5vw, 64px);
+  height: clamp(320px, 42vw, 430px);
+  overflow: hidden;
+}
+/* Faixa larga por trás do aparelho: é ela que "corta" o celular. */
+.palco::before {
+  content: "";
+  position: absolute;
+  inset: 42% 0 0;
+  background:
+    radial-gradient(60% 150% at 50% 0%, rgba(43, 87, 240, .34), transparent 72%),
+    linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .025));
+  border-top: 1px solid var(--border-strong);
+}
+/* Luz que sobe por trás do celular. */
+.palco::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(42% 70% at 50% 45%, rgba(43, 87, 240, .38), transparent 72%),
+    radial-gradient(60% 45% at 14% 30%, rgba(255, 178, 92, .07), transparent 70%);
+}
+.palco app-phone-mock {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+/* ---- Para que serve ---- */
+.persona {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  padding-block: clamp(32px, 5vw, 52px);
+}
+.persona + .persona { border-top: 1px solid var(--border); }
+.persona.is-flip .persona-art { order: 2; }
+
+.persona-art {
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.persona-text h3 { margin-top: 14px; }
+.papel {
+  margin: 6px 0 22px;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.ba { padding-left: 16px; border-left: 2px solid var(--border-strong); }
+.ba + .ba { margin-top: 22px; }
+.ba.is-after { border-left-color: var(--brand-500); }
+.ba-t {
+  margin: 0 0 8px;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.ba.is-after .ba-t { color: var(--brand-300); }
+.ba-p { margin: 0; font-size: .96rem; }
+.ba-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+.ba-list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: .96rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.ba-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px; top: .52em;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--brand-500);
+  box-shadow: 0 0 0 4px rgba(43, 87, 240, .16);
+}
+.persona-cta { margin-top: 26px; }
+
+/* ---- Contato ---- */
+.contato {
+  display: grid;
+  grid-template-columns: 1.3fr auto;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  padding: clamp(28px, 4vw, 44px);
+  border-radius: var(--radius-lg);
+}
+.contato .lead { margin-top: 12px; }
+.contato-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+
+/* ---- Responsivo ---- */
+@media (max-width: 860px) {
+  .persona { grid-template-columns: 1fr; }
+  .persona.is-flip .persona-art { order: 0; }
+  .persona-art { max-width: 380px; }
+  .contato { grid-template-columns: 1fr; }
+  .cta-par > * { flex: 1 1 220px; }
+}

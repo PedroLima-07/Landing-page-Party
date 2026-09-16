@@ -1,0 +1,57 @@
+<section class="section page-top glow-a">
+  <div class="shell">
+    <p class="eyebrow">Planos para bares</p>
+    <h1>Pare de fechar o mês no achismo.</h1>
+    <p class="lead">
+      Comanda digital, tela para a equipe e um painel que mostra o que está
+      acontecendo no salão agora, não só quando o caixa fecha.
+    </p>
+  </div>
+</section>
+
+<section class="section glow-c">
+  <div class="shell">
+    <div class="planos">
+      @for (p of planos; track p.nome) {
+        <article class="card plano" [class.is-top]="p.destaque">
+          @if (p.destaque) {
+            <span class="tag-top">Mais escolhido</span>
+          }
+          <h2 class="plano-nome">{{ p.nome }}</h2>
+          <p class="plano-resumo">{{ p.resumo }}</p>
+
+          <p class="plano-preco">
+            <span class="valor">{{ p.preco }}</span>
+            @if (p.periodo) {
+              <span class="periodo">{{ p.periodo }}</span>
+            }
+          </p>
+
+          <ul class="plano-itens">
+            @for (i of p.itens; track i) {
+              <li>{{ i }}</li>
+            }
+          </ul>
+
+          <a class="plano-cta" [class.btn-party]="p.destaque" [class.btn-ghost]="!p.destaque"
+             routerLink="/" fragment="contato">
+            {{ p.cta }}
+          </a>
+        </article>
+      }
+    </div>
+
+    <p class="nota">
+      <span class="chip is-warm">Em definição</span>
+      O modelo de monetização ainda está sendo fechado pelo time, e os valores acima
+      entram quando a decisão do Lean Canvas for concluída.
+    </p>
+
+    <p class="troca">
+      Você é cliente e caiu aqui sem querer?
+      <a routerLink="/planos/cliente" class="link-quiet">
+        Ver os planos para clientes <span class="arrow">→</span>
+      </a>
+    </p>
+  </div>
+</section>
