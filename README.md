@@ -20,7 +20,8 @@ diferentes na mesma página e encaminhar cada visitante para o cadastro certo.
 identidade visual da marca (azul), sem replicar as cores usadas internamente para diferenciar
 os acessos do sistema.
 
-> O sistema completo (cliente, gerente e bar/cozinha) fica em repositório separado: `[link]`
+> O sistema completo (cliente, gerente e bar/cozinha) fica em repositório separado:
+> [Startup-PlusParty](https://github.com/PedroLima-07/Startup-PlusParty)
 
 ---
 
@@ -61,7 +62,10 @@ os acessos do sistema.
 
 ## Tecnologias
 
-`[especificar — ex: HTML, CSS, JavaScript / Angular]`
+- **Angular 22** (standalone components, rotas com lazy loading)
+- **TypeScript** e **SCSS**
+- **Bootstrap 5.3** (carregado pelo `angular.json`)
+- Fonte **Inter**, via Google Fonts
 
 Protótipo desenhado no Figma.
 
@@ -71,32 +75,59 @@ Protótipo desenhado no Figma.
 
 ```
 party-landing/
-├── index.html
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── img/
-└── README.md
+├── angular.json
+├── package.json
+└── src/
+    ├── index.html
+    ├── main.ts
+    ├── styles.scss              # design system: tokens, fundo contínuo, botões
+    └── app/
+        ├── app.ts / app.html    # shell: header + router-outlet + footer
+        ├── app.routes.ts
+        ├── shared/              # logo, header, footer, ilustrações das personas
+        └── pages/
+            ├── home/
+            ├── sobre/
+            ├── planos-cliente/
+            ├── planos-estabelecimento/
+            └── equipe/
 ```
 
 ---
 
 ## Como rodar
 
+Requer **Node.js 22.22.3+** (ou 24.15+), exigência do Angular 22.
+
 ```bash
 # Clonar o repositório
-git clone [URL]
-cd party-landing
+git clone https://github.com/PedroLima-07/Landing-page-Party.git
+cd Landing-page-Party/party-landing
 
-# Abrir localmente
-[comando ou: abrir index.html no navegador]
+# Instalar as dependências
+npm install
+
+# Rodar em modo desenvolvimento -> http://localhost:4200
+npm start
+
+# Gerar o build de produção em dist/
+npm run build
 ```
 
 ---
 
 ## Status
 
-🚧 **Em desenvolvimento** — implementação prevista para a última semana de outubro de 2026.
+🚧 **Em desenvolvimento.**
+
+Já implementado: página principal com as 4 seções, as 4 páginas secundárias,
+design system, header responsivo e rodapé.
+
+Pendente:
+
+- Valores dos planos (aguardando a definição de monetização no Lean Canvas)
+- Formulário de cadastro real — hoje os CTAs apontam para a seção de contato
+- Publicação da página
 
 ---
 
