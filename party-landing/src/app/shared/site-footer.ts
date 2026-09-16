@@ -34,7 +34,7 @@ import { PartyLogo } from './party-logo';
 
       <div class="shell ft-base">
         <p class="credits">
-          +party {{ ano }} · São Paulo. Projeto acadêmico de
+          +party {{ ano }} · Sorocaba. Projeto acadêmico de
           Análise e Desenvolvimento de Sistemas.
         </p>
         <a routerLink="/equipe" class="link-quiet">

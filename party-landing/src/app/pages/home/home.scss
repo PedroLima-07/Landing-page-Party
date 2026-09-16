@@ -67,23 +67,38 @@
 
 .alt-path { margin-top: 22px; }
 
-/* Palco do celular: uma faixa de luz atravessa a página por trás do aparelho. */
+/* Palco do celular: o aparelho aparece só até certo ponto e mergulha atrás de
+   uma faixa que atravessa a página, como numa vitrine. */
 .palco {
   position: relative;
-  margin-top: clamp(44px, 6vw, 70px);
-  padding-bottom: clamp(10px, 2vw, 20px);
+  margin-top: clamp(40px, 5vw, 64px);
+  height: clamp(320px, 42vw, 430px);
+  overflow: hidden;
 }
-/* Luz suave centrada no aparelho, sem bordas duras que cortem a página. */
+/* Faixa larga por trás do aparelho: é ela que "corta" o celular. */
 .palco::before {
   content: "";
   position: absolute;
-  inset: 12% -10% 6%;
+  inset: 42% 0 0;
+  background:
+    radial-gradient(60% 150% at 50% 0%, rgba(43, 87, 240, .34), transparent 72%),
+    linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .025));
+  border-top: 1px solid var(--border-strong);
+}
+/* Luz que sobe por trás do celular. */
+.palco::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   z-index: -1;
   background:
-    radial-gradient(46% 62% at 50% 52%, rgba(43, 87, 240, .34), transparent 72%),
-    radial-gradient(70% 50% at 18% 42%, rgba(255, 178, 92, .07), transparent 70%),
-    radial-gradient(70% 50% at 82% 58%, rgba(91, 130, 255, .12), transparent 70%);
-  filter: blur(6px);
+    radial-gradient(42% 70% at 50% 45%, rgba(43, 87, 240, .38), transparent 72%),
+    radial-gradient(60% 45% at 14% 30%, rgba(255, 178, 92, .07), transparent 70%);
+}
+.palco app-phone-mock {
+  position: relative;
+  z-index: 1;
+  display: block;
 }
 
 /* ---- Para que serve ---- */

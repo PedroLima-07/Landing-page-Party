@@ -1,6 +1,6 @@
 <div align="center">
 
-# +party — Landing Page
+# +party | Landing Page
 
 **A porta de entrada do +party.**
 
@@ -16,7 +16,7 @@ Esta é a landing page do **+party**, o sistema de vida noturna que conecta quem
 com os bares da cidade. Ela cumpre um papel específico: apresentar o produto para dois públicos
 diferentes na mesma página e encaminhar cada visitante para o cadastro certo.
 
-É a única peça do projeto que fala com os dois lados ao mesmo tempo — por isso mantém a
+É a única peça do projeto que fala com os dois lados ao mesmo tempo, por isso mantém a
 identidade visual da marca (azul), sem replicar as cores usadas internamente para diferenciar
 os acessos do sistema.
 
@@ -31,17 +31,17 @@ os acessos do sistema.
 
 | Seção | Conteúdo |
 |---|---|
-| **Início** | Apresentação do +party, com a escolha de perfil (cliente ou dono de bar) e um caminho alternativo para quem ainda quer entender melhor |
-| **Para que serve** | Duas personas — um cliente e um dono de bar — cada uma com a situação antes do +party e como o sistema resolve seu problema |
+| **Início** | Apresentação do +party com o aplicativo em um celular, a escolha de perfil (cliente ou dono de bar) e um caminho alternativo para quem ainda quer entender melhor |
+| **Para que serve** | Duas personas (um cliente e um dono de bar), cada uma com a situação antes do +party e como o sistema resolve seu problema |
 | **Contato** | Canal de e-mail para dúvidas e parcerias |
 | **Rodapé** | Créditos do projeto e link para a página da equipe |
 
 **Páginas secundárias**
 
-- **Sobre o sistema** — detalhamento das duas visões (rolezeiro e dono do estabelecimento)
-- **Planos — Cliente** — opções disponíveis para o público final, levando ao cadastro
-- **Planos — Estabelecimento** — opções para bares, levando ao cadastro
-- **Nossa equipe** — os integrantes por trás do projeto
+- **Sobre o sistema**: detalhamento das duas visões (rolezeiro e dono do estabelecimento)
+- **Planos para clientes**: opções disponíveis para o público final, levando ao cadastro
+- **Planos para bares**: opções para bares, levando ao cadastro
+- **Nossa equipe**: os integrantes por trás do projeto
 
 ---
 
@@ -49,10 +49,19 @@ os acessos do sistema.
 
 - **Fundo contínuo.** A página inteira compartilha uma única superfície de fundo, sem cortes
   entre seções. Cada seção é diferenciada por variações sutis de iluminação, não por blocos de
-  cor distintos.
+  cor distintos. A camada de luz deriva bem devagar, como uma aurora, e um grão discreto tira
+  o aspecto "liso demais" do degradê.
 - **Escuro, mas acolhedor.** A atmosfera noturna é mantida, evitando a frieza de um visual
   excessivamente técnico. Uma cor de apoio quente é usada com moderação para quebrar a
   monocromia.
+- **Tipografia com personalidade.** Títulos em Bricolage Grotesque, com peso alto e entrelinha
+  fechada; texto corrido em Manrope. O contraste entre as duas é proposital, porque fontes neutras
+  demais deixavam a página com cara de template.
+- **Uma entrada coreografada.** O topo de cada página revela seus blocos em cascata, uma única
+  vez. Vale mais que microanimações espalhadas, e some por completo para quem pede
+  `prefers-reduced-motion`.
+- **O produto à vista.** Logo abaixo da promessa, um celular mostra a tela de bares com a
+  lotação ao vivo. O visitante entende o que o +party faz antes de ler qualquer explicação.
 - **Ilustrações humanas.** As personas são acompanhadas de ilustrações, e não de blocos
   abstratos, para que o visitante se identifique com o problema antes de conhecer o produto.
 - **Um ponto de decisão.** A escolha de perfil acontece uma única vez, logo no topo da página,
@@ -65,7 +74,7 @@ os acessos do sistema.
 - **Angular 22** (standalone components, rotas com lazy loading)
 - **TypeScript** e **SCSS**
 - **Bootstrap 5.3** (carregado pelo `angular.json`)
-- Fonte **Inter**, via Google Fonts
+- Fontes **Bricolage Grotesque** (títulos) e **Manrope** (texto), via Google Fonts
 
 Protótipo desenhado no Figma.
 
@@ -84,7 +93,7 @@ party-landing/
     └── app/
         ├── app.ts / app.html    # shell: header + router-outlet + footer
         ├── app.routes.ts
-        ├── shared/              # logo, header, footer, ilustrações das personas
+        ├── shared/              # logo, header, footer, celular do hero, ilustrações
         └── pages/
             ├── home/
             ├── sobre/
@@ -126,7 +135,7 @@ design system, header responsivo e rodapé.
 Pendente:
 
 - Valores dos planos (aguardando a definição de monetização no Lean Canvas)
-- Formulário de cadastro real — hoje os CTAs apontam para a seção de contato
+- Formulário de cadastro real, já que hoje os CTAs apontam para a seção de contato
 - Publicação da página
 
 ---

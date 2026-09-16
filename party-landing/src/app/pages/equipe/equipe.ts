@@ -18,7 +18,7 @@ interface Membro {
 export class Equipe {
   readonly membros: Membro[] = [
     {
-      nome: 'Pedro Lima',
+      nome: 'Pedro Cardoso',
       papel: 'Organização do time',
       foco: 'Mantém todo mundo no mesmo ritmo: divide as tarefas, acompanha os prazos e é quem costura a conversa entre as pessoas.',
       github: 'PedroLima-07',
