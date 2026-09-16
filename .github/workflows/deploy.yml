@@ -30,6 +30,18 @@ jobs:
         working-directory: party-landing
         run: npm run build
 
+      # Sem os segredos o passo seguinte falha com um erro dificil de ler,
+      # entao a checagem acontece antes, com o recado do que esta faltando.
+      - name: Conferir credenciais do Cloudflare
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CONTA: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$TOKEN" ] || [ -z "$CONTA" ]; then
+            echo "::error::Faltam os segredos CLOUDFLARE_API_TOKEN e/ou CLOUDFLARE_ACCOUNT_ID. Cadastre os dois em Settings > Secrets and variables > Actions (requer permissao de admin no repositorio)."
+            exit 1
+          fi
+
       - name: Publicar no Cloudflare
         uses: cloudflare/wrangler-action@v3
         with:
