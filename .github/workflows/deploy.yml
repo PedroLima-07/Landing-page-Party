@@ -1,0 +1,39 @@
+name: Publicar landing page
+
+on:
+  push:
+    branches: [main, feat/landing-angular]
+    paths: ['party-landing/**', '.github/workflows/deploy.yml']
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: party-landing/package-lock.json
+
+      - name: Instalar dependencias
+        working-directory: party-landing
+        run: npm ci
+
+      - name: Build de producao
+        working-directory: party-landing
+        run: npm run build
+
+      - name: Publicar no Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: party-landing
+          command: deploy
