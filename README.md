@@ -47,11 +47,14 @@ os acessos do sistema.
 
 ## Decisões de design
 
-- **Fundo contínuo, e quase chapado.** A página inteira compartilha uma única superfície, sem
-  cortes entre seções. A profundidade vem de uma malha fina, de um grão discreto e de **uma
-  única** luz azul ancorada no topo. Degradês grandes e difusos espalhados pela tela foram
-  retirados: davam à página o aspecto genérico de papel de parede, e não de produto. O limite
-  entre duas seções é um fio de luz na borda, com uma claridade curta descendo dele.
+- **Superfície chapada.** O fundo é uma cor sólida. Sem degradê, sem malha, sem padrão
+  geométrico: textura desenhada no fundo denuncia a página antes de qualquer pessoa ler o
+  conteúdo. A única coisa por cima é um grão sem forma, só para o preto não ficar plástico em
+  tela grande.
+- **A separação é um degrau de tom.** Nada de luz difusa entre seções. A seção do meio de cada
+  página recebe uma superfície sólida um passo acima da base (`.faixa`), de ponta a ponta da
+  tela. Na página inicial esse bloco começa atrás do celular e segue até o fim de "Para que
+  serve", então o aparelho parece mergulhar dentro dele.
 - **Escuro, mas acolhedor.** A atmosfera noturna é mantida, evitando a frieza de um visual
   excessivamente técnico. Uma cor de apoio quente é usada com moderação para quebrar a
   monocromia.

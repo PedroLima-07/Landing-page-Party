@@ -75,23 +75,16 @@
   height: clamp(320px, 42vw, 430px);
   overflow: hidden;
 }
-/* Faixa larga por trás do aparelho: é ela que "corta" o celular. Fica quase
-   chapada, com o fio de luz na borda de cima fazendo o recorte, em vez de um
-   degradê difuso subindo do nada. */
+/* Faixa larga por trás do aparelho: é ela que "corta" o celular. É a mesma
+   superfície da .faixa da seção seguinte, e as duas encostam, então o bloco em
+   relevo começa no celular e segue até o fim de "Para que serve". O único fio
+   da página fica na borda de cima dela, fazendo o recorte da vitrine. */
 .palco::before {
   content: "";
   position: absolute;
   inset: 42% 0 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, 0));
+  background: var(--surface-raised);
   border-top: 1px solid var(--border-strong);
-}
-/* A luz do palco: uma só, elíptica e presa ao aparelho. */
-.palco::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(34% 58% at 50% 46%, rgba(43, 87, 240, .34), transparent 70%);
 }
 .palco app-phone-mock {
   position: relative;
@@ -112,18 +105,6 @@
     transform 1s cubic-bezier(0.22, 1, 0.36, 1) 650ms;
 }
 .palco.revela.is-visivel { transform: none; }
-
-/* A luz do palco acende junto com o aparelho, um pouco atrasada. */
-.palco.revela::after {
-  opacity: 0;
-  transition: opacity 1.1s ease 900ms;
-}
-.palco.revela.is-visivel::after { opacity: 1; }
-
-/* Sem movimento, a luz do palco não espera nada para acender. */
-@media (prefers-reduced-motion: reduce) {
-  .palco.revela::after { opacity: 1; }
-}
 
 /* ---- Para que serve ---- */
 .persona {
