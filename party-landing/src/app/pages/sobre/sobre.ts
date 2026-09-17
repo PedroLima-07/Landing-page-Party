@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PersonaArt } from '../../shared/persona-art';
+import { Revela } from '../../shared/revela';
 
 interface Visao {
   kind: 'cliente' | 'bar';
@@ -13,7 +14,7 @@ interface Visao {
 
 @Component({
   selector: 'app-sobre',
-  imports: [RouterLink, PersonaArt],
+  imports: [RouterLink, PersonaArt, Revela],
   templateUrl: './sobre.html',
   styleUrl: './sobre.scss',
 })

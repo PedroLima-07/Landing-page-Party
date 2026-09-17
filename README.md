@@ -47,19 +47,22 @@ os acessos do sistema.
 
 ## Decisões de design
 
-- **Fundo contínuo.** A página inteira compartilha uma única superfície de fundo, sem cortes
-  entre seções. Cada seção é diferenciada por variações sutis de iluminação, não por blocos de
-  cor distintos. A camada de luz deriva bem devagar, como uma aurora, e um grão discreto tira
-  o aspecto "liso demais" do degradê.
+- **Fundo contínuo, e quase chapado.** A página inteira compartilha uma única superfície, sem
+  cortes entre seções. A profundidade vem de uma malha fina, de um grão discreto e de **uma
+  única** luz azul ancorada no topo. Degradês grandes e difusos espalhados pela tela foram
+  retirados: davam à página o aspecto genérico de papel de parede, e não de produto. O limite
+  entre duas seções é um fio de luz na borda, com uma claridade curta descendo dele.
 - **Escuro, mas acolhedor.** A atmosfera noturna é mantida, evitando a frieza de um visual
   excessivamente técnico. Uma cor de apoio quente é usada com moderação para quebrar a
   monocromia.
 - **Tipografia com personalidade.** Títulos em Bricolage Grotesque, com peso alto e entrelinha
   fechada; texto corrido em Manrope. O contraste entre as duas é proposital, porque fontes neutras
   demais deixavam a página com cara de template.
-- **Uma entrada coreografada.** O topo de cada página revela seus blocos em cascata, uma única
-  vez. Vale mais que microanimações espalhadas, e some por completo para quem pede
-  `prefers-reduced-motion`.
+- **Tudo entra, uma vez só.** O topo de cada página revela seus blocos em cascata assim que
+  ela carrega. Daí para baixo, cada bloco aparece quando chega na tela, e não volta a sumir:
+  quem marca o momento é a diretiva `revela`, e a animação mora no design system. O celular
+  do topo tem a entrada mais longa da página, e a tela dele se monta sozinha depois que o
+  aparelho se assenta. Tudo isso some por completo para quem pede `prefers-reduced-motion`.
 - **O produto à vista.** Logo abaixo da promessa, um celular mostra a tela de bares com a
   lotação ao vivo. O visitante entende o que o +party faz antes de ler qualquer explicação.
 - **Ilustrações humanas.** As personas são acompanhadas de ilustrações, e não de blocos
@@ -130,13 +133,12 @@ npm run build
 🚧 **Em desenvolvimento.**
 
 Já implementado: página principal com as 4 seções, as 4 páginas secundárias,
-design system, header responsivo e rodapé.
+design system, header responsivo, rodapé e publicação automática no Cloudflare.
 
 Pendente:
 
 - Valores dos planos (aguardando a definição de monetização no Lean Canvas)
 - Formulário de cadastro real, já que hoje os CTAs apontam para a seção de contato
-- Publicação da página
 
 ---
 

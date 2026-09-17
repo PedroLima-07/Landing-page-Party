@@ -15,8 +15,12 @@
 /* ---------- 1. Tokens ---------- */
 :root {
   /* Superfície */
-  --bg-base:        #070a12;
-  --bg-deep:        #04060d;
+  --bg-top:         #080b15;
+  --bg-base:        #05070f;
+  --bg-deep:        #04060c;
+  /* Fio da malha do fundo. Alto o bastante para dar estrutura, baixo o
+     bastante para sumir por trás do texto. */
+  --malha:          rgba(255, 255, 255, 0.028);
   --surface:        rgba(255, 255, 255, 0.04);
   --surface-hover:  rgba(255, 255, 255, 0.07);
   --border:         rgba(255, 255, 255, 0.09);
@@ -70,25 +74,28 @@ body {
   overflow-x: hidden;
 }
 
-/* Fundo contínuo: uma camada fixa atrás de tudo. Nenhuma seção pinta o
-   próprio fundo, elas só adicionam luz. A camada anima muito devagar,
-   como uma aurora, para dar atmosfera sem virar distração. */
+/* Fundo contínuo: uma superfície escura quase chapada, fixa atrás de tudo.
+   A profundidade vem de uma malha fina e de UMA luz de marca no topo, e não
+   de várias manchas coloridas espalhadas: degradê difuso demais deixava a
+   página com cara de papel de parede genérico, e não de produto. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(1100px 760px at 14% 6%,  rgba(43, 87, 240, 0.44), transparent 66%),
-    radial-gradient(900px 620px at 86% 18%,  rgba(91, 130, 255, 0.20), transparent 64%),
-    radial-gradient(760px 540px at 4% 56%,   rgba(255, 178, 92, 0.13), transparent 60%),
-    radial-gradient(1000px 780px at 80% 86%, rgba(22, 48, 155, 0.38), transparent 64%),
-    linear-gradient(180deg, var(--bg-base) 0%, var(--bg-deep) 100%);
-  will-change: transform;
-  animation: aurora 38s ease-in-out infinite alternate;
+    /* Malha: dá escala e estrutura à superfície, no lugar do borrão colorido. */
+    linear-gradient(90deg, var(--malha) 0 1px, transparent 1px 100%) 0 0 / 76px 76px,
+    linear-gradient(0deg,  var(--malha) 0 1px, transparent 1px 100%) 0 0 / 76px 76px,
+    /* Vinheta: fecha as bordas e centraliza o olhar. */
+    radial-gradient(120% 80% at 50% 30%, transparent 55%, rgba(0, 0, 0, 0.55) 100%),
+    /* A única luz da página: estreita, fria e ancorada no topo. */
+    radial-gradient(820px 460px at 50% -8%, rgba(43, 87, 240, 0.28), transparent 72%),
+    /* Base sólida, com a variação mínima de cima para baixo. */
+    linear-gradient(180deg, var(--bg-top) 0%, var(--bg-base) 54%, var(--bg-deep) 100%);
 }
 
-/* Grão sutil sobre o fundo: tira o aspecto liso demais do degradê
+/* Grão sutil sobre o fundo: tira o aspecto liso demais da superfície
    sem custar peso de imagem (SVG inline em data-uri). */
 body::after {
   content: "";
@@ -98,11 +105,6 @@ body::after {
   opacity: 0.05;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-@keyframes aurora {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to   { transform: translate3d(2.5%, -2%, 0) scale(1.06); }
 }
 
 img, svg { max-width: 100%; display: block; }
@@ -129,17 +131,21 @@ a:hover { color: #fff; }
   padding-block: clamp(64px, 9vw, 116px);
 }
 
-/* Variações sutis de iluminação, que substituem os "blocos de cor" por seção. */
-.glow-a::after, .glow-b::after, .glow-c::after {
+/* Limite entre seções: um fio de luz na borda de cima e uma claridade curta
+   descendo dele. Substitui as manchas de cor que antes flutuavam soltas no
+   meio de cada bloco, que era justamente o que dava o aspecto de fundo
+   gerado automaticamente. A seção continua sem pintar o próprio fundo. */
+.glow-b, .glow-c { border-top: 1px solid var(--border); }
+.glow-b::after, .glow-c::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0 0 auto;
+  height: 220px;
   pointer-events: none;
   z-index: -1;
 }
-.glow-a::after { background: radial-gradient(900px 440px at 40% 8%,  rgba(91, 130, 255, 0.18), transparent 70%); }
-.glow-b::after { background: radial-gradient(760px 380px at 15% 50%, rgba(255, 178, 92, 0.09), transparent 68%); }
-.glow-c::after { background: radial-gradient(820px 420px at 85% 60%, rgba(43, 87, 240, 0.20), transparent 70%); }
+.glow-b::after { background: linear-gradient(180deg, rgba(91, 130, 255, 0.11), transparent); }
+.glow-c::after { background: linear-gradient(180deg, rgba(255, 178, 92, 0.06), transparent); }
 
 .divider {
   height: 1px;
@@ -314,8 +320,9 @@ p { line-height: 1.68; color: var(--text-muted); }
 }
 
 /* ---------- 8. Entrada ----------
-   Um único momento coreografado: o topo de cada página revela seus blocos
-   em cascata. Vale mais que microanimações espalhadas pelo resto do site. */
+   O topo de cada página revela seus blocos em cascata assim que ela carrega.
+   É a abertura: acontece uma vez só, sem esperar rolagem, porque esse
+   conteúdo já está na tela. */
 @keyframes rise {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: none; }
@@ -331,7 +338,23 @@ p { line-height: 1.68; color: var(--text-muted); }
 .hero .shell > *:nth-child(4), .page-top .shell > *:nth-child(4) { animation-delay: 0.35s; }
 .hero .shell > *:nth-child(5), .page-top .shell > *:nth-child(5) { animation-delay: 0.45s; }
 .hero .shell > *:nth-child(6), .page-top .shell > *:nth-child(6) { animation-delay: 0.55s; }
-.hero > .palco { animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.65s backwards; }
+
+/* ---------- 9. Aparição no scroll ----------
+   Daí para baixo, cada bloco entra quando chega na tela, uma única vez.
+   Quem marca o momento é a diretiva `revela`, que só acrescenta
+   `.is-visivel`; a animação inteira mora aqui. O atraso opcional
+   (`revela="120"`) escalona vizinhos que entram juntos. */
+.revela {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--revela-atraso, 0ms),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--revela-atraso, 0ms);
+}
+.revela.is-visivel {
+  opacity: 1;
+  transform: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -341,5 +364,10 @@ p { line-height: 1.68; color: var(--text-muted); }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
+  }
+  /* Sem movimento, nada pode depender da rolagem para ficar visível. */
+  .revela {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

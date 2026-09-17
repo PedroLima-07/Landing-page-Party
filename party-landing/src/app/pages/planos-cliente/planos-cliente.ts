@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Revela } from '../../shared/revela';
 
 export interface Plano {
   nome: string;
@@ -13,7 +14,7 @@ export interface Plano {
 
 @Component({
   selector: 'app-planos-cliente',
-  imports: [RouterLink],
+  imports: [RouterLink, Revela],
   templateUrl: './planos-cliente.html',
   styleUrl: './planos-cliente.scss',
 })

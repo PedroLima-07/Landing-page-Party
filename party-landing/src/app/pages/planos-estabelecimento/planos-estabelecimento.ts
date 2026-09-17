@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import type { Plano } from '../planos-cliente/planos-cliente';
+import { Revela } from '../../shared/revela';
 
 @Component({
   selector: 'app-planos-estabelecimento',
-  imports: [RouterLink],
+  imports: [RouterLink, Revela],
   templateUrl: './planos-estabelecimento.html',
   styleUrl: './planos-estabelecimento.scss',
 })

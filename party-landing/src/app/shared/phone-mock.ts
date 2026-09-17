@@ -243,6 +243,32 @@ interface Favorito {
       background: rgba(255, 255, 255, 0.14);
     }
     .tab.is-on { background: var(--brand-400); }
+
+    /* A tela se monta sozinha depois que o aparelho entra: os blocos sobem um
+       atrás do outro, como o app carregando na mão de quem abriu. Quem dá a
+       largada é a diretiva revela do palco, lá na home, por isso o gatilho
+       vem de fora com :host-context. */
+    .screen > * {
+      opacity: 0;
+      transform: translateY(14px);
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    :host-context(.is-visivel) .screen > * {
+      opacity: 1;
+      transform: none;
+    }
+    :host-context(.is-visivel) .screen > *:nth-child(1) { transition-delay: 0.95s; }
+    :host-context(.is-visivel) .screen > *:nth-child(2) { transition-delay: 1.07s; }
+    :host-context(.is-visivel) .screen > *:nth-child(3) { transition-delay: 1.19s; }
+    :host-context(.is-visivel) .screen > *:nth-child(4) { transition-delay: 1.31s; }
+    :host-context(.is-visivel) .screen > *:nth-child(5) { transition-delay: 1.43s; }
+
+    /* Sem movimento, a tela nao pode depender de nada para existir. */
+    @media (prefers-reduced-motion: reduce) {
+      .screen > * { opacity: 1; transform: none; }
+    }
   `,
 })
 export class PhoneMock {

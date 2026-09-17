@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PersonaArt } from '../../shared/persona-art';
 import { PhoneMock } from '../../shared/phone-mock';
+import { Revela } from '../../shared/revela';
 
 interface Persona {
   kind: 'cliente' | 'bar';
@@ -16,7 +17,7 @@ interface Persona {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, PersonaArt, PhoneMock],
+  imports: [RouterLink, PersonaArt, PhoneMock, Revela],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

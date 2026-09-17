@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PartyLogo } from './party-logo';
+import { Revela } from './revela';
 
 @Component({
   selector: 'app-site-footer',
-  imports: [RouterLink, PartyLogo],
+  imports: [RouterLink, PartyLogo, Revela],
   template: `
     <hr class="divider" />
-    <footer class="ft">
+    <footer class="ft" revela>
       <div class="shell ft-inner">
         <div class="ft-brand">
           <app-party-logo />

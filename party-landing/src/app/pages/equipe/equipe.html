@@ -1,4 +1,4 @@
-<section class="section page-top glow-a">
+<section class="section page-top">
   <div class="shell">
     <p class="eyebrow">Nossa equipe</p>
     <h1>Quem está por trás do +party.</h1>
@@ -14,7 +14,7 @@
   <div class="shell">
     <div class="time">
       @for (m of membros; track m.nome) {
-        <article class="card membro">
+        <article class="card membro" [revela]="$index * 80">
           <div class="membro-topo">
             <span class="avatar" aria-hidden="true">{{ iniciais(m.nome) }}</span>
             <div>
@@ -44,7 +44,7 @@
       }
     </div>
 
-    <p class="troca">
+    <p class="troca" revela>
       Quer falar com a gente?
       <a routerLink="/" fragment="contato" class="link-quiet">
         Ir para o contato <span class="arrow">→</span>
