@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Revela } from '../../shared/revela';
 
 interface Membro {
   nome: string;
@@ -11,7 +12,7 @@ interface Membro {
 
 @Component({
   selector: 'app-equipe',
-  imports: [RouterLink],
+  imports: [RouterLink, Revela],
   templateUrl: './equipe.html',
   styleUrl: './equipe.scss',
 })
@@ -61,8 +62,10 @@ export class Equipe {
     },
     {
       nome: 'Sabrina Montossa',
-      papel: 'Landing page e acompanhamento',
-      foco: 'Ajuda a construir esta página e participa das revisões em que o time olha o que ficou pronto a cada etapa.',
+      papel: 'Design',
+      foco: 'Desenha no Figma os protótipos das telas pensando primeiro no celular, e cuida das peças que apresentam o +party, como o banner das apresentações.',
+      github: 'Montossa',
+      linkedin: 'sabrina-montossa-70b90a394',
     },
   ];
 
