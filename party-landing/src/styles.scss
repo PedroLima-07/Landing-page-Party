@@ -3,9 +3,9 @@
    Design system global.
 
    Decisões vindas do README:
-   - Fundo contínuo: uma única superfície, sem cortes entre seções.
-     A diferenciação vem de variações sutis de iluminação (.glow-*), não de
-     blocos de cor distintos.
+   - Superfície chapada: o fundo é UMA cor sólida, sem degradê, sem malha e
+     sem textura geométrica. Quem separa as seções é um bloco de tom sólido
+     (.faixa), não uma luz difusa.
    - Escuro, mas acolhedor: base fria + uma cor de apoio quente (--warm)
      usada com moderação.
    - Identidade da marca: azul. As cores internas de acesso (roxo = gerente,
@@ -14,9 +14,10 @@
 
 /* ---------- 1. Tokens ---------- */
 :root {
-  /* Superfície */
-  --bg-base:        #070a12;
-  --bg-deep:        #04060d;
+  /* Superfície: dois tons sólidos, e só. O contraste entre os dois é o que
+     dá estrutura à página; não há degradê entre eles. */
+  --bg-base:        #06080f;
+  --surface-raised: #0c111e;
   --surface:        rgba(255, 255, 255, 0.04);
   --surface-hover:  rgba(255, 255, 255, 0.07);
   --border:         rgba(255, 255, 255, 0.09);
@@ -70,39 +71,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Fundo contínuo: uma camada fixa atrás de tudo. Nenhuma seção pinta o
-   próprio fundo, elas só adicionam luz. A camada anima muito devagar,
-   como uma aurora, para dar atmosfera sem virar distração. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(1100px 760px at 14% 6%,  rgba(43, 87, 240, 0.44), transparent 66%),
-    radial-gradient(900px 620px at 86% 18%,  rgba(91, 130, 255, 0.20), transparent 64%),
-    radial-gradient(760px 540px at 4% 56%,   rgba(255, 178, 92, 0.13), transparent 60%),
-    radial-gradient(1000px 780px at 80% 86%, rgba(22, 48, 155, 0.38), transparent 64%),
-    linear-gradient(180deg, var(--bg-base) 0%, var(--bg-deep) 100%);
-  will-change: transform;
-  animation: aurora 38s ease-in-out infinite alternate;
-}
-
-/* Grão sutil sobre o fundo: tira o aspecto liso demais do degradê
-   sem custar peso de imagem (SVG inline em data-uri). */
+/* Grão sobre a superfície: única textura da página, e sem forma nenhuma,
+   ao contrário de uma malha, que se reconhece de imediato. Serve só para o
+   preto não ficar plástico em tela grande. */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  opacity: 0.05;
+  opacity: 0.04;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-@keyframes aurora {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to   { transform: translate3d(2.5%, -2%, 0) scale(1.06); }
 }
 
 img, svg { max-width: 100%; display: block; }
@@ -129,23 +108,19 @@ a:hover { color: #fff; }
   padding-block: clamp(64px, 9vw, 116px);
 }
 
-/* Variações sutis de iluminação, que substituem os "blocos de cor" por seção. */
-.glow-a::after, .glow-b::after, .glow-c::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
+/* A seção do meio de cada página ganha uma superfície própria, um degrau de
+   tom acima da base, de ponta a ponta da tela. É esse degrau que separa as
+   seções: um bloco de cor sólida, como uma faixa de papel diferente colada na
+   página. Nenhuma luz, nenhum degradê, nenhum padrão. */
+.faixa {
+  background: var(--surface-raised);
 }
-.glow-a::after { background: radial-gradient(900px 440px at 40% 8%,  rgba(91, 130, 255, 0.18), transparent 70%); }
-.glow-b::after { background: radial-gradient(760px 380px at 15% 50%, rgba(255, 178, 92, 0.09), transparent 68%); }
-.glow-c::after { background: radial-gradient(820px 420px at 85% 60%, rgba(43, 87, 240, 0.20), transparent 70%); }
 
 .divider {
   height: 1px;
   border: 0;
   margin: 0;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  background: var(--border);
 }
 
 /* ---------- 4. Tipografia ---------- */
@@ -314,8 +289,9 @@ p { line-height: 1.68; color: var(--text-muted); }
 }
 
 /* ---------- 8. Entrada ----------
-   Um único momento coreografado: o topo de cada página revela seus blocos
-   em cascata. Vale mais que microanimações espalhadas pelo resto do site. */
+   O topo de cada página revela seus blocos em cascata assim que ela carrega.
+   É a abertura: acontece uma vez só, sem esperar rolagem, porque esse
+   conteúdo já está na tela. */
 @keyframes rise {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: none; }
@@ -331,7 +307,23 @@ p { line-height: 1.68; color: var(--text-muted); }
 .hero .shell > *:nth-child(4), .page-top .shell > *:nth-child(4) { animation-delay: 0.35s; }
 .hero .shell > *:nth-child(5), .page-top .shell > *:nth-child(5) { animation-delay: 0.45s; }
 .hero .shell > *:nth-child(6), .page-top .shell > *:nth-child(6) { animation-delay: 0.55s; }
-.hero > .palco { animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.65s backwards; }
+
+/* ---------- 9. Aparição no scroll ----------
+   Daí para baixo, cada bloco entra quando chega na tela, uma única vez.
+   Quem marca o momento é a diretiva `revela`, que só acrescenta
+   `.is-visivel`; a animação inteira mora aqui. O atraso opcional
+   (`revela="120"`) escalona vizinhos que entram juntos. */
+.revela {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--revela-atraso, 0ms),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--revela-atraso, 0ms);
+}
+.revela.is-visivel {
+  opacity: 1;
+  transform: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -341,5 +333,10 @@ p { line-height: 1.68; color: var(--text-muted); }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
+  }
+  /* Sem movimento, nada pode depender da rolagem para ficar visível. */
+  .revela {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

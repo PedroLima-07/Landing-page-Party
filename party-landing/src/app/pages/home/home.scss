@@ -75,31 +75,36 @@
   height: clamp(320px, 42vw, 430px);
   overflow: hidden;
 }
-/* Faixa larga por trás do aparelho: é ela que "corta" o celular. */
+/* Faixa larga por trás do aparelho: é ela que "corta" o celular. É a mesma
+   superfície da .faixa da seção seguinte, e as duas encostam, então o bloco em
+   relevo começa no celular e segue até o fim de "Para que serve". O único fio
+   da página fica na borda de cima dela, fazendo o recorte da vitrine. */
 .palco::before {
   content: "";
   position: absolute;
   inset: 42% 0 0;
-  background:
-    radial-gradient(60% 150% at 50% 0%, rgba(43, 87, 240, .34), transparent 72%),
-    linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .025));
+  background: var(--surface-raised);
   border-top: 1px solid var(--border-strong);
-}
-/* Luz que sobe por trás do celular. */
-.palco::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(42% 70% at 50% 45%, rgba(43, 87, 240, .38), transparent 72%),
-    radial-gradient(60% 45% at 14% 30%, rgba(255, 178, 92, .07), transparent 70%);
 }
 .palco app-phone-mock {
   position: relative;
   z-index: 1;
   display: block;
 }
+
+/* Entrada do celular: mais longa, com um pouco de escala, e depois do texto
+   do topo, porque é o objeto que o visitante precisa olhar por último.
+   O atraso fica escrito aqui, e não no template: o Angular prefixa as
+   variáveis CSS que aparecem em estilo de componente, então o
+   `--revela-atraso` que a diretiva escreve no elemento não chegaria. */
+.palco.revela {
+  transform: translateY(46px) scale(0.965);
+  transform-origin: 50% 100%;
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 650ms,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1) 650ms;
+}
+.palco.revela.is-visivel { transform: none; }
 
 /* ---- Para que serve ---- */
 .persona {

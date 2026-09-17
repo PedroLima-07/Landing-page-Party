@@ -1,5 +1,5 @@
 <!-- ============ 1. INÍCIO ============ -->
-<section id="inicio" class="section hero glow-a">
+<section id="inicio" class="section hero">
   <div class="shell">
     <span class="selo">
       <i aria-hidden="true"></i> Lotação dos bares em tempo real
@@ -35,15 +35,15 @@
   </div>
 
   <!-- O app na mão de quem sai -->
-  <div class="palco">
+  <div class="palco" revela>
     <app-phone-mock />
   </div>
 </section>
 
 <!-- ============ 2. PARA QUE SERVE ============ -->
-<section id="para-que-serve" class="section glow-b">
+<section id="para-que-serve" class="section faixa">
   <div class="shell">
-    <div class="section-head">
+    <div class="section-head" revela>
       <p class="eyebrow">Para que serve</p>
       <h2>Dois lados do balcão, o mesmo problema.</h2>
       <p class="lead">
@@ -53,7 +53,7 @@
     </div>
 
     @for (p of personas; track p.kind) {
-      <article class="persona" [class.is-flip]="p.kind === 'bar'">
+      <article class="persona" [class.is-flip]="p.kind === 'bar'" revela>
         <div class="persona-art">
           <app-persona-art [kind]="p.kind" [alt]="'Ilustração: ' + p.nome" />
         </div>
@@ -87,9 +87,9 @@
 </section>
 
 <!-- ============ 3. CONTATO ============ -->
-<section id="contato" class="section glow-c">
+<section id="contato" class="section">
   <div class="shell">
-    <div class="contato card">
+    <div class="contato card" revela>
       <div>
         <p class="eyebrow">Contato</p>
         <h2>Dúvida, parceria ou quer o +party no seu bar?</h2>

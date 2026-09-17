@@ -48,4 +48,8 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: party-landing
+          # Assets estaticos ("assets" no wrangler.jsonc) exigem wrangler 4.
+          # Sem fixar, a action pode instalar uma versao que nao entende a
+          # configuracao e o deploy quebra so no CI.
+          wranglerVersion: '4.133.0'
           command: deploy

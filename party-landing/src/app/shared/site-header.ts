@@ -46,9 +46,15 @@ import { PartyLogo } from './party-logo';
       align-items: center;
       transition: background 0.22s ease, border-color 0.22s ease, backdrop-filter 0.22s ease;
       border-bottom: 1px solid transparent;
+      animation: hd-desce 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    }
+    /* O cabeçalho é a primeira coisa a se assentar, antes da cascata do topo. */
+    @keyframes hd-desce {
+      from { opacity: 0; transform: translateY(-100%); }
+      to   { opacity: 1; transform: none; }
     }
     .hd.is-stuck {
-      background: rgba(7, 10, 18, 0.78);
+      background: rgba(5, 7, 15, 0.82);
       backdrop-filter: blur(14px);
       border-bottom-color: var(--border);
     }

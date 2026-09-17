@@ -1,4 +1,4 @@
-<section class="section page-top glow-a">
+<section class="section page-top">
   <div class="shell">
     <p class="eyebrow">Sobre o sistema</p>
     <h1>Um sistema, duas visões.</h1>
@@ -9,10 +9,10 @@
   </div>
 </section>
 
-<section class="section glow-b">
+<section class="section faixa">
   <div class="shell">
     @for (v of visoes; track v.kind) {
-      <article class="visao" [class.is-flip]="v.kind === 'bar'">
+      <article class="visao" [class.is-flip]="v.kind === 'bar'" revela>
         <aside class="visao-aside">
           <div class="visao-art">
             <app-persona-art [kind]="v.kind" [alt]="'Ilustração: ' + v.titulo" />
